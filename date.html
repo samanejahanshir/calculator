@@ -1,0 +1,154 @@
+<!-- <html>
+    <head>
+
+    </head>
+<body>
+    <div style="width:100%; height: 100%; align-items:center ;">
+        <label id="demo" style="width: 400px;; height: 400px;; background-color: plum;">00:00:00</label>
+
+    </div>
+    <div>
+        
+    </div>
+    <script>
+        var c=0;
+        // setTimeout(function run(){
+        //     console.log('ss');
+        //     c++;
+        //     if(c<10){
+        //         setTimeout(run,1000);
+        //     }
+        // },1000);
+        setTimeout(function(){
+            alert("world!");
+        });
+        alert("helllooo");
+    </script> 
+
+    <script>
+        function clocking(){
+        var d=new Date();
+        var hour=d.getHours();
+        var minate=d.getMinutes();
+        var sec=d.getSeconds();
+        var p='AM';
+        
+        if(hour>12){
+            hour=hour-12;
+            p='PM';
+        }
+        if(hour<10){
+            hour="0"+hour;
+        }
+        if(minate<10){
+            minate="0"+minate;
+    
+        }
+        if(sec<10){
+            sec="0"+sec;
+        }
+        var clock=hour+":"+minate+":"+sec+" "+p;
+        document.getElementById("demo").textContent=clock;
+        setTimeout(clocking,1000);
+        }
+        clocking();
+    </script>
+
+</body>
+    </html> -->
+
+    <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<link rel="stylesheet" href="csscose.css">
+    <title>calculator</title>
+  </head>
+  <body>
+    
+<div class="container">
+    <form name="form" id="myform">
+        <div class="display">
+            <input type="text" placeholder="0" name="displayresult" id="displayresult">
+        </div>
+        <input class="but" type="button" onclick="reset()" value="c">
+        <h2>java script calculator</h2>
+        <div class="butt">
+        <div class="row">
+            <input class="but" type="button" onclick="addcalculate(b7.value)" name="b7" value="7">
+            <input class="but" type="button" onclick="addcalculate(b8.value)" name="b8" value="8">
+            <input class="but" type="button" onclick="addcalculate(b9.value)" name="b9" value="9">
+            <input class="but" type="button" onclick="addcalculate(addb.value)" name="addb" value="+">
+            <input class="but" type="button" onclick="maths('abs')" name="abs" value="ABS">
+
+        </div>
+        <div class="row">
+            <input class="but" type="button" onclick="addcalculate(b4.value)" name="b4" value="4">
+            <input class="but" type="button" onclick="addcalculate(b5.value)" name="b5" value="5">
+            <input class="but"  type="button" onclick="addcalculate(b6.value)" name="b6" value="6">
+            <input class="but"  type="button" onclick="addcalculate(subb.value)" name="subb" value="-">
+            <input class="but" type="button" onclick="maths('sqrt')" name="sqrt" value="&radic;">
+
+        </div>
+        <div class="row">
+            <input class="but" type="button" onclick="addcalculate(b1.value)" name="b1" value="1">
+            <input class="but" type="button" onclick="addcalculate(b2.value)" name="b2" value="2">
+            <input class="but" type="button" onclick="addcalculate(b3.value)" name="b3" value="3">
+            <input class="but" type="button" onclick="addcalculate(mulb.value)" name="mulb" value="*">
+            <input class="but" type="button" onclick="maths('round')" name="round" value="r">
+
+        </div>
+        <div class="row">
+            <input class="but" type="button" onclick="addcalculate(b0.value)" name="b0" value="0">
+            <input class="but" type="button" onclick="addcalculate(potb.value)" name="potb" value=".">
+            <input class="but" type="button" onclick="addcalculate(divb.value)" name="divb" value="/">
+            <input class="but" type="button" onclick="finalaz()" name="eql" value="=">
+            <input class="but" type="button" onclick="maths('pow')" name="pow" value="pow">
+
+        </div>
+    </div>
+    </form>
+
+</div>
+<script>
+    'use strict';
+    var powflag=false;
+    function addcalculate(value){
+        document.getElementById("displayresult").value+=value;
+        if(powflag){
+            var num=document.getElementById("displayresult").value.split("^");
+            document.getElementById("displayresult").value=Math.pow(num[0],num[1]);
+            powflag=false;
+        }
+    }
+
+    function finalaz(){
+        document.getElementById("displayresult").value=eval(document.getElementById("displayresult").value);
+    }
+
+    function reset(){
+        document.getElementById("displayresult").value='';
+    }
+
+    function maths(mathsfunc){
+        if(mathsfunc=='pow'){
+            powflag=true;
+            document.getElementById("displayresult").value+='^';
+        }
+        else{
+        var val=document.getElementById("displayresult").value;
+        document.getElementById("displayresult").value= Math[mathsfunc](val);
+        }
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  </body>
+</html>
